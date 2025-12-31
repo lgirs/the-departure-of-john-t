@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta name="description" content="A digital farewell for John T.">
-<meta property="og:title" content="The Departure of John T">
-<meta property="og:description" content="Click the mailbox to read the messages in the ashes.">
-<meta property="og:image" content="cityscape.jpg">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A digital farewell for John T.">
+    <meta property="og:title" content="The Departure of John T">
+    <meta property="og:description" content="Click the mailbox to read the messages in the ashes.">
+    <meta property="og:image" content="cityscape.jpg">
     <title>The Departure of John T</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div id="welcome-banner">
-        <span>JOHN, WE WILL MISS YOU. CLICK THE MAILBOX TO READ OUR MESSAGES.</span>
+    <div id="login-overlay">
+        <div class="login-box">
+            <h1>RESTRICTED ACCESS</h1>
+            <p>ENTER CLEARANCE CODE</p>
+            <input type="password" id="password-input" placeholder="********">
+            <button onclick="checkPassword()">ENTER</button>
+        </div>
     </div>
 
-    <div class="game-wrapper">
-        <img src="cityscape.jpg" id="background-img" alt="Cityscape">
-        <div id="mailbox-hotspot" onclick="showRandomMessage()"></div>
-    </div>
+    <div id="main-content" class="hidden">
+        <div id="welcome-banner">
+            <span>JOHN, WE WILL MISS YOU. CLICK THE MAILBOX TO READ OUR MESSAGES.</span>
+        </div>
 
-    <div id="message-box" class="hidden">
-        <div id="text-content"></div>
-        <div id="author-content"></div>
-        <div class="button-group">
-            <button onclick="closeMessage()">CLOSE</button>
-            <button onclick="showRandomMessage()">NEXT MESSAGE</button>
+        <div class="game-wrapper">
+            <img src="cityscape.jpg" id="background-img" alt="Cityscape">
+            <div id="mailbox-hotspot" onclick="showRandomMessage()"></div>
+        </div>
+
+        <div id="message-box" class="hidden">
+            <div id="text-content"></div>
+            <div id="author-content"></div>
+            <div class="button-group">
+                <button onclick="closeMessage()">CLOSE</button>
+                <button onclick="showRandomMessage()">NEXT MESSAGE</button>
+            </div>
         </div>
     </div>
 
