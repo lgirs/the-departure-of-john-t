@@ -2,19 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Departure of John T</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="game-container">
-        <div id="mailbox-hotspot" onclick="showRandomMessage()"></div>
+    <div class="game-wrapper">
+        <img src="cityscape.jpg" id="background-img" alt="Cityscape">
         
-        <div id="message-box" class="hidden">
-            <div id="text-content"></div>
-            <div id="author-content"></div>
+        <div id="mailbox-hotspot" onclick="showRandomMessage()"></div>
+    </div>
+
+    <div id="message-box" class="hidden">
+        <div id="text-content"></div>
+        <div id="author-content"></div>
+        <div class="button-group">
+            <button onclick="showRandomMessage()">NEXT</button>
             <button onclick="closeMessage()">CLOSE</button>
         </div>
     </div>
