@@ -7,10 +7,16 @@ body, html {
     height: 100%;
     background-color: #000;
     font-family: 'VT323', monospace;
+    overflow: hidden;
+}
+
+/* --- Main Content Layout --- */
+/* This container stacks the banner and image vertically */
+#main-content {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: auto; 
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 
 /* --- Password Gate Styling --- */
@@ -62,18 +68,16 @@ body, html {
 
 /* --- Welcome Ticker Banner --- */
 #welcome-banner {
-    position: fixed;
-    top: 0;
-    left: 0;
+    /* Removed 'position: fixed' so it sits above the image */
     width: 100%;
     background: rgba(0, 0, 0, 0.9);
     color: #0f0;
     border-bottom: 2px solid #fff;
     font-size: 1.5rem;
-    z-index: 1000;
     overflow: hidden;
     white-space: nowrap;
     padding: 10px 0;
+    flex-shrink: 0; /* Ensures the banner size is constant */
 }
 
 #welcome-banner span {
@@ -90,20 +94,30 @@ body, html {
 /* --- Game Container & Background --- */
 .game-wrapper {
     position: relative;
-    line-height: 0; 
+    line-height: 0;
+    /* Takes up all remaining vertical space below the banner */
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
 }
 
 #background-img {
     display: block;
-    max-height: 100vh; 
-    max-width: 100vw;  
+    /* Max height is now 100% of the wrapper, not the screen */
+    max-height: 100%;
+    max-width: 100vw;
     width: auto;
     height: auto;
+    /* Ensures the image scales nicely within its area */
+    object-fit: contain;
 }
 
 #mailbox-hotspot {
     position: absolute;
-    top: 72%; 
+    top: 72%;
     left: 42%;
     width: 15%;
     height: 20%;
@@ -115,7 +129,7 @@ body, html {
 
 /* --- Message Popup Box --- */
 #message-box {
-    position: fixed; 
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
