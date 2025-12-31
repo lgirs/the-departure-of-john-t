@@ -1,4 +1,4 @@
-/* Finalizing the layout for The Departure of John T */
+/* Layout Update for The Departure of John T */
 body, html {
     margin: 0;
     padding: 0;
@@ -7,55 +7,64 @@ body, html {
     overflow: hidden;
     background-color: #000;
     font-family: 'VT323', monospace;
+    /* Prevents mobile Safari from zooming in on clicks */
+    touch-action: manipulation;
 }
 
 .game-container {
     position: relative;
     width: 100vw;
     height: 100vh;
+    /* "Contain" ensures you see the whole city without it zooming/cropping */
     background: url('cityscape.jpg') no-repeat center center;
-    background-size: cover;
+    background-size: contain; 
 }
 
-/* The Hitbox: Positioned over the mailbox in the image */
 #mailbox-hotspot {
     position: absolute;
     bottom: 5%;
-    left: 48%; /* Adjusted for center-bottom mailbox */
+    left: 48%;
     width: 12%;
     height: 25%;
     cursor: pointer;
-    /* Remove the background color below once you confirm it works */
-    background: rgba(0, 255, 0, 0.2); 
+    background: transparent; /* The green box is now gone */
+    -webkit-tap-highlight-color: transparent; /* Removes the grey flash on mobile */
 }
 
-/* Retro Pop-up Box */
 #message-box {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: #1a1a1a;
-    color: #00ff00; /* Terminal Green */
+    color: #00ff00;
     border: 4px solid #fff;
-    padding: 2rem;
-    width: 80%;
-    max-width: 400px;
+    padding: 1.5rem;
+    width: 85%;
+    max-width: 500px;
+    /* Added scrollability for long messages */
+    max-height: 80vh; 
+    overflow-y: auto;
     text-align: center;
     box-shadow: 8px 8px 0px #000;
     z-index: 100;
+    display: flex;
+    flex-direction: column;
 }
 
 #text-content {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
-    line-height: 1.2;
+    line-height: 1.3;
+    /* Ensures long words don't break the box */
+    word-wrap: break-word; 
 }
 
 #author-content {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #aaaaaa;
     text-transform: uppercase;
+    margin-bottom: 1rem;
 }
 
 .hidden {
@@ -63,13 +72,13 @@ body, html {
 }
 
 button {
-    margin-top: 20px;
     font-family: 'VT323', monospace;
     font-size: 1.2rem;
     background: #fff;
     border: none;
-    padding: 5px 15px;
+    padding: 8px 20px;
     cursor: pointer;
+    align-self: center;
 }
 
 button:hover {
