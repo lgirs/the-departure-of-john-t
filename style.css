@@ -1,36 +1,41 @@
-/* Zoomable Layout for The Departure of John T */
+/* Perfect Fit Layout for The Departure of John T */
 body, html {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
     background-color: #000;
     font-family: 'VT323', monospace;
-    /* Allow the browser to scroll and zoom naturally */
+    /* Centers the project on large screens */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: auto; 
 }
 
 .game-wrapper {
     position: relative;
-    display: inline-block;
-    line-height: 0;
+    line-height: 0; /* Kills the 1cm 'text' spacing at the bottom */
 }
 
 #background-img {
     display: block;
-    /* This makes the image fill the width but allows zooming */
-    width: 100vw; 
+    /* Ensures it never grows taller than the screen */
+    max-height: 100vh; 
+    /* Ensures it never grows wider than the screen */
+    max-width: 100vw;  
+    width: auto;
     height: auto;
 }
 
 #mailbox-hotspot {
     position: absolute;
-    /* These percentages pin the box to the letterbox in the image */
     top: 72%; 
     left: 42%;
     width: 15%;
     height: 20%;
     cursor: pointer;
-    /* Invisible but 'tangible' for iPhone touch events */
-    background: rgba(0, 0, 0, 0.01); 
+    background: transparent;
     -webkit-tap-highlight-color: transparent;
     z-index: 5;
 }
@@ -40,7 +45,7 @@ body, html {
 }
 
 #message-box {
-    position: fixed; /* Keeps it in the center of the screen, not the image */
+    position: fixed; 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
