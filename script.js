@@ -1,34 +1,37 @@
 let greetings = [];
+let currentIndex = -1;
 
 // Load messages for The Departure of John T
 window.addEventListener('DOMContentLoaded', async () => {
     try {
-        // We use just the filename here
         const response = await fetch('messages.json');
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
+        if (!response.ok) throw new Error('Network response was not ok');
         greetings = await response.json();
-        console.log("Messages loaded successfully.");
+        console.log("Success: Messages loaded.");
     } catch (error) {
-        console.error("Failed to load messages:", error);
-        alert("The Departure of John T: The message delivery system is currently offline. Please check that messages.json is correctly formatted.");
+        console.error("Error loading messages:", error);
     }
 });
 
+// Cycles through messages in order, then reshuffles when reaching the end
 function showRandomMessage() {
-    if (greetings.length === 0) {
-        return;
+    if (greetings.length === 0) return;
+
+    // Move to the next message in the list
+    currentIndex++;
+
+    // If we reach the end of the list, go back to the start
+    if (currentIndex >= greetings.length) {
+        currentIndex = 0;
     }
 
-    const randomIndex = Math.floor(Math.random() * greetings.length);
-    const selected = greetings[randomIndex];
+    const selected = greetings[currentIndex];
 
+    // Display the content
     document.getElementById('text-content').innerText = `"${selected.message}"`;
     document.getElementById('author-content').innerText = `- ${selected.from}`;
     
+    // Reveal the message box
     document.getElementById('message-box').classList.remove('hidden');
 }
 
