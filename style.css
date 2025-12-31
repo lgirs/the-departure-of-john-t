@@ -1,53 +1,61 @@
-/* Resetting everything for The Departure of John T */
-* {
-    box-sizing: border-box;
-}
-
+/* Finalizing the layout for The Departure of John T */
 body, html {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    background-color: #111; /* Dark grey fallback */
-    font-family: 'VT323', monospace;
     overflow: hidden;
+    background-color: #000;
+    font-family: 'VT323', monospace;
 }
 
 .game-container {
+    position: relative;
     width: 100vw;
     height: 100vh;
-    /* We use a relative path here to find the image in the same folder */
-    background-image: url('./cityscape.jpg'); 
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url('cityscape.jpg') no-repeat center center;
     background-size: cover;
-    border: 5px solid red; /* TEMPORARY: If you see this red border, the CSS is working! */
-    position: relative;
 }
 
+/* The Hitbox: Positioned over the mailbox in the image */
 #mailbox-hotspot {
     position: absolute;
     bottom: 5%;
-    left: 42%;
-    width: 15%;
+    left: 48%; /* Adjusted for center-bottom mailbox */
+    width: 12%;
     height: 25%;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.1); /* Slight highlight to see it */
+    /* Remove the background color below once you confirm it works */
+    background: rgba(0, 255, 0, 0.2); 
 }
 
+/* Retro Pop-up Box */
 #message-box {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #222;
-    color: #0f0;
+    background: #1a1a1a;
+    color: #00ff00; /* Terminal Green */
     border: 4px solid #fff;
-    padding: 20px;
-    width: 300px;
+    padding: 2rem;
+    width: 80%;
+    max-width: 400px;
     text-align: center;
-    box-shadow: 10px 10px 0px #000;
-    z-index: 10;
+    box-shadow: 8px 8px 0px #000;
+    z-index: 100;
+}
+
+#text-content {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+#author-content {
+    font-size: 1.2rem;
+    color: #aaaaaa;
+    text-transform: uppercase;
 }
 
 .hidden {
@@ -55,10 +63,15 @@ body, html {
 }
 
 button {
-    margin-top: 15px;
+    margin-top: 20px;
     font-family: 'VT323', monospace;
+    font-size: 1.2rem;
     background: #fff;
     border: none;
-    padding: 5px 10px;
+    padding: 5px 15px;
     cursor: pointer;
+}
+
+button:hover {
+    background: #00ff00;
 }
