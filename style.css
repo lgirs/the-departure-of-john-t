@@ -1,3 +1,20 @@
+/* Full Stylesheet for The Departure of John T */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    font-family: 'VT323', monospace;
+    /* Centers the project content on large screens */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto; 
+}
+
+/* --- Welcome Ticker Banner --- */
 #welcome-banner {
     position: fixed;
     top: 0;
@@ -8,19 +25,105 @@
     border-bottom: 2px solid #fff;
     font-size: 1.5rem;
     z-index: 1000;
-    overflow: hidden; /* This hides the text when it's "outside" the banner */
+    overflow: hidden;
     white-space: nowrap;
     padding: 10px 0;
 }
 
 #welcome-banner span {
     display: inline-block;
-    padding-left: 100%; /* Starts the text off-screen to the right */
+    padding-left: 100%;
     animation: ticker 15s linear infinite;
 }
 
-/* The animation that moves the text from right to left */
 @keyframes ticker {
     0% { transform: translateX(0); }
     100% { transform: translateX(-100%); }
+}
+
+/* --- Game Container & Background --- */
+.game-wrapper {
+    position: relative;
+    line-height: 0; /* Removes the tiny text-gap at the bottom of images */
+}
+
+#background-img {
+    display: block;
+    max-height: 100vh; 
+    max-width: 100vw;  
+    width: auto;
+    height: auto;
+}
+
+/* --- Clickable Mailbox Area --- */
+#mailbox-hotspot {
+    position: absolute;
+    top: 72%; 
+    left: 42%;
+    width: 15%;
+    height: 20%;
+    cursor: pointer;
+    background: transparent;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 5;
+}
+
+/* --- Message Popup Box --- */
+#message-box {
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(26, 26, 26, 0.98);
+    color: #00ff00;
+    border: 4px solid #fff;
+    padding: 20px;
+    width: 85%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    text-align: center;
+    box-shadow: 10px 10px 0px #000;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+#text-content {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    word-wrap: break-word;
+}
+
+#author-content {
+    font-size: 1.1rem;
+    color: #888;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+/* --- Buttons --- */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    background: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #00ff00;
+    color: #000;
+}
+
+.hidden {
+    display: none !important;
 }
