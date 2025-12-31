@@ -1,108 +1,26 @@
-/* Perfect Fit Layout for The Departure of John T */
 #welcome-banner {
     position: fixed;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: #0f0;
-    padding: 10px 20px;
-    border: 2px solid #fff;
-    font-size: 1.5rem;
-    z-index: 100;
-    text-align: center;
-    white-space: nowrap;
-}
-body, html {
-    margin: 0;
-    padding: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
-    background-color: #000;
-    font-family: 'VT323', monospace;
-    /* Centers the project on large screens */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: auto; 
-}
-
-.game-wrapper {
-    position: relative;
-    line-height: 0; /* Kills the 1cm 'text' spacing at the bottom */
-}
-
-#background-img {
-    display: block;
-    /* Ensures it never grows taller than the screen */
-    max-height: 100vh; 
-    /* Ensures it never grows wider than the screen */
-    max-width: 100vw;  
-    width: auto;
-    height: auto;
-}
-
-#mailbox-hotspot {
-    position: absolute;
-    top: 72%; 
-    left: 42%;
-    width: 15%;
-    height: 20%;
-    cursor: pointer;
-    background: transparent;
-    -webkit-tap-highlight-color: transparent;
-    z-index: 5;
-}
-
-.hidden {
-    display: none !important;
-}
-
-#message-box {
-    position: fixed; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(26, 26, 26, 0.98);
-    color: #00ff00;
-    border: 4px solid #fff;
-    padding: 20px;
-    width: 85%;
-    max-width: 450px;
-    max-height: 80vh;
-    overflow-y: auto;
-    text-align: center;
-    box-shadow: 10px 10px 0px #000;
+    background: rgba(0, 0, 0, 0.9);
+    color: #0f0;
+    border-bottom: 2px solid #fff;
+    font-size: 1.5rem;
     z-index: 1000;
+    overflow: hidden; /* This hides the text when it's "outside" the banner */
+    white-space: nowrap;
+    padding: 10px 0;
 }
 
-#text-content {
-    font-size: 1.4rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.3;
+#welcome-banner span {
+    display: inline-block;
+    padding-left: 100%; /* Starts the text off-screen to the right */
+    animation: ticker 15s linear infinite;
 }
 
-#author-content {
-    font-size: 1.1rem;
-    color: #888;
-    margin-bottom: 1.5rem;
-}
-
-.button-group {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-button {
-    font-family: 'VT323', monospace;
-    font-size: 1.2rem;
-    background: #fff;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #00ff00;
+/* The animation that moves the text from right to left */
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
 }
