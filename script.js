@@ -1,7 +1,32 @@
 let greetings = [];
 let currentIndex = -1;
 
-// Load messages for The Departure of John T
+// 1. Password Verification Logic
+function checkPassword() {
+    const passwordInput = document.getElementById('password-input').value;
+    const correctPassword = "k1nde5teveR";
+
+    if (passwordInput === correctPassword) {
+        // Hide the login screen
+        document.getElementById('login-overlay').classList.add('hidden');
+        // Show the main content of The Departure of John T
+        document.getElementById('main-content').classList.remove('hidden');
+    } else {
+        alert("ACCESS DENIED: INVALID CLEARANCE CODE");
+    }
+}
+
+// Allow pressing "Enter" key to submit password
+document.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        const loginOverlay = document.getElementById('login-overlay');
+        if (!loginOverlay.classList.contains('hidden')) {
+            checkPassword();
+        }
+    }
+});
+
+// 2. Load messages for The Departure of John T
 window.addEventListener('DOMContentLoaded', async () => {
     try {
         const response = await fetch('messages.json');
@@ -13,25 +38,20 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// Cycles through messages in order, then reshuffles when reaching the end
+// 3. Message Display Logic
 function showRandomMessage() {
     if (greetings.length === 0) return;
 
-    // Move to the next message in the list
     currentIndex++;
-
-    // If we reach the end of the list, go back to the start
     if (currentIndex >= greetings.length) {
         currentIndex = 0;
     }
 
     const selected = greetings[currentIndex];
 
-    // Display the content
     document.getElementById('text-content').innerText = `"${selected.message}"`;
     document.getElementById('author-content').innerText = `- ${selected.from}`;
     
-    // Reveal the message box
     document.getElementById('message-box').classList.remove('hidden');
 }
 
